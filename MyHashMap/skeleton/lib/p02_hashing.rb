@@ -4,11 +4,13 @@ end
 
 class Array
   def hash
+    self.map { |e|  }
   end
 end
 
 class String
   def hash
+    self.chars.map { |chr| chr.ord.hash }.join.to_i
   end
 end
 
