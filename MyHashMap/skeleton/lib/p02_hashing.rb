@@ -4,13 +4,13 @@ end
 
 class Array
   def hash
-    self.map { |e|  }
+    self.join('*').hash
   end
 end
 
 class String
   def hash
-    self.chars.map { |chr| chr.ord.hash }.join.to_i
+    self.chars.map { |chr| chr.ord }.join.to_i.hash
   end
 end
 
@@ -18,6 +18,6 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    0
+    (self.keys.sort.join('$') + self.values.sort.join("+")).hash
   end
 end
